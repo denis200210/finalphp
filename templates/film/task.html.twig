@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Random Film{% endblock %}
+
+{% block body %}
+    <style>
+        .btn{font: 25px "Arial"}
+        .text{font: 20px "Arial"}
+    </style>
+    <h1>Random film that you can watch now</h1>
+    <div>
+        <button class ="btn" value="Refresh Page" onClick="window.location.reload();">Generate</button>
+    </div>
+    <body>
+    {% for film in films %}
+        <div class="text">
+            <i>Name: </i>
+            <i>{{ film.name }}</i>
+        </div>
+        <div class="text">
+            <i>Date begin: </i>
+            <i>{{ film.date ? film.date|date('Y-m-d') : '' }}</i>
+        </div>
+        <div>
+            <td><img src="{{ film.poster }}"></td>
+        </div>
+
+    {% else %}
+        <tr>
+            <td colspan="5">no records found</td>
+        </tr>
+    {% endfor %}
+    </body>
+
+
+{% endblock %}
